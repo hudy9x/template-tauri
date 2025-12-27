@@ -114,23 +114,46 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
+html,
 body {
   background: transparent;
+  overflow: hidden;
+  border-radius: 12px;
 }
+
+body {
+  background: hsl(var(--background));
+}
+
+#root {
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 100vh;
+  max-height: 100vh;
+  background: hsl(var(--background));
+  clip-path: inset(0 round 12px);
+  display: flex;
+  flex-direction: column;
+}
+
 .cm-focused {
   @apply border-transparent !outline-transparent;
 }
+
 .home-page {
   @apply overflow-hidden relative bg-secondary;
+  border-radius: 0 0 12px 12px;
 }
 
-.home-wrapper{
-  @apply h-[calc(100vh-34px)];
+.home-wrapper {
+  height: calc(100vh - 52px);
+  overflow: hidden;
 }
 
 .custom-scrollbar {

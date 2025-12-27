@@ -11,12 +11,16 @@
   },
   "app": {
     "withGlobalTauri": true,
+    "macOSPrivateApi": true,
     "windows": [
       {
         "title": "UML Editor",
         "width": 1300,
         "height": 700,
-        "devtools": true
+        "devtools": true,
+        "decorations": false,
+        "transparent": true,
+        "shadow": true
       }
     ],
     "security": {
@@ -33,9 +37,7 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "resources": [
-
-    ],
+    "resources": [],
     "createUpdaterArtifacts": true,
     "fileAssociations": [
       {

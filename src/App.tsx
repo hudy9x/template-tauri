@@ -5,20 +5,24 @@ import { Toaster } from "@/components/ui/sonner"
 import Home from './pages/Home';
 import { Layout } from './components/Layout';
 import Empty from './pages/Empty';
+import { Titlebar } from './features/Titlebar';
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Layout>
-        <Toaster position="bottom-right" richColors />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/empty" element={<Empty />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <>
+      <Titlebar />
+      <BrowserRouter>
+        <Layout>
+          <Toaster position="bottom-right" richColors />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/empty" element={<Empty />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </>
   );
 }
 
