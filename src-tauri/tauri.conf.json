@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "UML Editor",
+  "version": "1.25.2",
+  "identifier": "com.uml-editor.editor",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "UML Editor",
+        "width": 1300,
+        "height": 700,
+        "devtools": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [
+
+    ],
+    "createUpdaterArtifacts": true,
+    "fileAssociations": [
+      {
+        "ext": [
+          "pu",
+          "puml"
+        ],
+        "name": "PlantUML Diagram",
+        "description": "PlantUML diagram file",
+        "mimeType": "text/plain"
+      }
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDM4NjIzRDY4RkZGNDZFRQpSV1R1UnYrUDFpT0dBNWpIMXpEaEswbUVkMkY4aW9nendCR1hQYktnNHBaK0tlaXk1QzN1dkpZMwo=",
+      "endpoints": [
+        "https://github.com/hudy9x/uml/releases/latest/download/latest.json"
+      ]
+    }
+  }
+}

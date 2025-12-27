@@ -1,0 +1,30 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "sql:default",
+    "sql:allow-execute",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "dialog:default",
+    "fs:default",
+    "fs:allow-app-write",
+    "fs:allow-app-write-recursive",
+    "fs:allow-app-read",
+    "core:webview:allow-create-webview-window",
+    "core:window:allow-close",
+    "updater:default",
+    "process:default",
+    "clipboard-manager:allow-write-image",
+    "core:window:default",
+    "core:window:allow-minimize",
+    "core:window:allow-start-dragging",
+    "core:window:allow-toggle-maximize",
+    "opener:allow-open-url"
+  ]
+}
