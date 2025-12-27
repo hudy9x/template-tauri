@@ -131,6 +131,22 @@ body {
   background: hsl(var(--background));
 }
 
+/* Rounded inside border around the window */
+body:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 9999;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: inset 0px 0px 0px 0.5px black,
+    inset 0px 0px 0px 1.5px rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
 #root {
   border-radius: 12px;
   overflow: hidden;
@@ -140,10 +156,6 @@ body {
   clip-path: inset(0 round 12px);
   display: flex;
   flex-direction: column;
-}
-
-.cm-focused {
-  @apply border-transparent !outline-transparent;
 }
 
 .home-page {
@@ -158,43 +170,6 @@ body {
 
 .custom-scrollbar {
   @apply [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300;
-}
-
-.uml-preview-card {
-  /* height: calc(100% - 32px); */
-}
-
-.uml-editor-panel {
-  @apply rounded-none border-r h-full;
-  /* height: calc(100% - 32px); */
-  padding-bottom: 32px;
-}
-
-.uml-editor-panel .cm-scroller {
-  @apply [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent;
-  @apply [&::-webkit-scrollbar-thumb]:bg-primary/20 [&::-webkit-scrollbar-thumb:hover]:bg-primary;
-}
-
-/* Status Badge Styles */
-.status-badge {
-  background-color: #f3f4f6;
-  color: #374151;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.status-badge.info {
-  background-color: #e0f2fe;
-  color: #0369a1;
-}
-
-.status-badge.success {
-  background-color: #dcfce7;
-  color: #15803d;
-}
-
-.status-badge.error {
-  background-color: #fee2e2;
-  color: #b91c1c;
 }
 
 /* Scrollbar Styles */

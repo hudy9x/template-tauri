@@ -1,0 +1,47 @@
+import { getCurrentWindow } from '@tauri-apps/api/window';
+import { Minus, Square, X } from 'lucide-react';
+
+export function MacOSButtons() {
+  const appWindow = getCurrentWindow();
+
+  const handleMinimize = () => {
+    appWindow.minimize();
+  };
+
+  const handleMaximize = () => {
+    appWindow.toggleMaximize();
+  };
+
+  const handleClose = () => {
+    appWindow.close();
+  };
+
+  return (
+    <div className="flex items-center gap-2 group">
+      <button
+        onClick={handleClose}
+        title="Close"
+        aria-label="Close window"
+        className="w-3 h-3 rounded-full bg-[#ff5f57] border-[0.5px] border-black/[0.04] flex items-center justify-center relative hover:brightness-95"
+      >
+        <X size={10} strokeWidth={2.5} className="text-[#4d0000] opacity-0 group-hover:opacity-100 transition-opacity absolute" />
+      </button>
+      <button
+        onClick={handleMinimize}
+        title="Minimize"
+        aria-label="Minimize window"
+        className="w-3 h-3 rounded-full bg-[#ffbd2e] border-[0.5px] border-black/[0.04] flex items-center justify-center relative hover:brightness-95"
+      >
+        <Minus size={10} strokeWidth={2.5} className="text-[#6b4600] opacity-0 group-hover:opacity-100 transition-opacity absolute" />
+      </button>
+      <button
+        onClick={handleMaximize}
+        title="Maximize"
+        aria-label="Maximize window"
+        className="w-3 h-3 rounded-full bg-[#28c840] border-[0.5px] border-black/[0.04] flex items-center justify-center relative hover:brightness-95"
+      >
+        <Square size={8} strokeWidth={2.5} className="text-[#004d0f] opacity-0 group-hover:opacity-100 transition-opacity absolute" />
+      </button>
+    </div>
+  );
+}

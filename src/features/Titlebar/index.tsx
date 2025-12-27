@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { platform } from '@tauri-apps/plugin-os';
 import { WindowsTitlebar } from './WindowsTitlebar';
 import { MacOSTitlebar } from './MacOSTitlebar';
-import './titlebar.css';
 
 export function Titlebar() {
   const [currentPlatform, setCurrentPlatform] = useState<string>('');
