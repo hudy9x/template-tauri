@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Footer } from './Footer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,6 +11,7 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1 overflow-hidden">
         {children}
       </main>
+      <Footer />
     </div>
   );
-} 
+}

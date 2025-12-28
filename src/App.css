@@ -122,9 +122,11 @@
 
 html,
 body {
+  --rounded-window: 10px;
+
   background: transparent;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--rounded-window);
 }
 
 body {
@@ -141,31 +143,21 @@ body:after {
   bottom: 0px;
   z-index: 9999;
   background: transparent;
-  border-radius: 12px;
+  border-radius: var(--rounded-window);
   box-shadow: inset 0px 0px 0px 0.5px black,
     inset 0px 0px 0px 1.5px rgba(255, 255, 255, 0.2);
   pointer-events: none;
 }
 
 #root {
-  border-radius: 12px;
+  border-radius: var(--rounded-window);
   overflow: hidden;
   min-height: 100vh;
   max-height: 100vh;
   background: hsl(var(--background));
-  clip-path: inset(0 round 12px);
+  clip-path: inset(0 round var(--rounded-window));
   display: flex;
   flex-direction: column;
-}
-
-.home-page {
-  @apply overflow-hidden relative bg-secondary;
-  border-radius: 0 0 12px 12px;
-}
-
-.home-wrapper {
-  height: calc(100vh - 52px);
-  overflow: hidden;
 }
 
 .custom-scrollbar {
