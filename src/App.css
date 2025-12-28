@@ -126,17 +126,17 @@ body {
   --scroll-width: 7px;
   --scroll-rounded: 3px;
 
-  background: transparent;
+  /* background: transparent; */
+  background: var(--background);
   overflow: hidden;
   border-radius: var(--rounded-window);
 }
 
-body {
-  background: hsl(var(--background));
-}
-
 /* Rounded inside border around the window */
 body:after {
+  --rounded-window-1: inset 0px 0px 0px 0.5px rgb(255, 255, 255);
+  --rounded-window-2: inset 0px 0px 0px 1.5px rgba(255, 255, 255, 0.6);
+
   content: '';
   position: absolute;
   top: 0px;
@@ -146,9 +146,13 @@ body:after {
   z-index: 9999;
   background: transparent;
   border-radius: var(--rounded-window);
-  box-shadow: inset 0px 0px 0px 0.5px black,
-    inset 0px 0px 0px 1.5px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--rounded-window-1), var(--rounded-window-2);
   pointer-events: none;
+}
+
+.dark body:after {
+  --rounded-window-1: inset 0px 0px 0px 0.5px black;
+  --rounded-window-2: inset 0px 0px 0px 1.5px rgba(255, 255, 255, 0.2);
 }
 
 #root {

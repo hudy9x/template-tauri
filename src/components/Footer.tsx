@@ -1,8 +1,9 @@
 import { Github, ExternalLink } from 'lucide-react';
+import { openUrl } from '@tauri-apps/plugin-opener';
 
 export function Footer() {
-  const openLink = (url: string) => {
-    window.open(url, '_blank');
+  const openLink = async (url: string) => {
+    await openUrl(url);
   };
 
   return (
