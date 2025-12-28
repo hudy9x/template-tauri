@@ -25,6 +25,7 @@
     "core:window:allow-minimize",
     "core:window:allow-start-dragging",
     "core:window:allow-toggle-maximize",
+    "shell:allow-open",
     {
       "identifier": "opener:allow-open-url",
       "allow": [
