@@ -6,7 +6,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 h-8 flex items-center justify-center gap-4 bg-background/80 backdrop-blur-sm border-t border-muted-foreground/30 text-xs text-muted-foreground z-[9998]">
+    <footer className="fixed bottom-0 left-0 right-0 h-8 flex items-center justify-center gap-4 bg-background backdrop-blur-sm border-t border-muted-foreground/30 text-xs text-muted-foreground z-[9998]">
       <button
         onClick={() => openLink('https://github.com/hudy9x/template-tauri')}
         className="flex items-center gap-1.5 hover:text-foreground transition-colors"

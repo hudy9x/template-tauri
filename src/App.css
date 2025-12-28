@@ -123,6 +123,8 @@
 html,
 body {
   --rounded-window: 10px;
+  --scroll-width: 7px;
+  --scroll-rounded: 3px;
 
   background: transparent;
   overflow: hidden;
@@ -166,17 +168,17 @@ body:after {
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: var(--scroll-width);
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
-  border-radius: 4px;
+  border-radius: var(--scroll-rounded);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
+  background: var(--muted-foreground);
+  border-radius: var(--scroll-rounded);
 }
 
 ::-webkit-scrollbar-thumb:hover {
