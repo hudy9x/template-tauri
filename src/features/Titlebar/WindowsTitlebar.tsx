@@ -10,7 +10,7 @@ export function WindowsTitlebar() {
       </div>
 
       {/* Buttons - Absolute Right */}
-      <div className="absolute right-0">
+      <div className="absolute h-full right-0">
         <WindowsButtons />
       </div>
     </TitlebarContainer>

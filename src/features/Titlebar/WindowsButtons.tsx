@@ -22,7 +22,7 @@ export function WindowsButtons() {
         onClick={handleMinimize}
         title="Minimize"
         aria-label="Minimize window"
-        className="w-[46px] h-full flex items-center justify-center text-foreground hover:bg-accent transition-colors"
+        className="cursor-pointer w-[46px] h-full flex items-center justify-center text-foreground hover:bg-accent transition-colors"
       >
         <Minus size={16} />
       </button>
@@ -30,7 +30,7 @@ export function WindowsButtons() {
         onClick={handleMaximize}
         title="Maximize"
         aria-label="Maximize window"
-        className="w-[46px] h-full flex items-center justify-center text-foreground hover:bg-accent transition-colors"
+        className="cursor-pointer w-[46px] h-full flex items-center justify-center text-foreground hover:bg-accent transition-colors"
       >
         <Square size={14} />
       </button>
@@ -38,7 +38,7 @@ export function WindowsButtons() {
         onClick={handleClose}
         title="Close"
         aria-label="Close window"
-        className="w-[46px] h-full flex items-center justify-center text-foreground hover:bg-[#e81123] hover:text-white active:bg-[#c50f1f] transition-colors"
+        className="cursor-pointer w-[46px] h-full flex items-center justify-center text-foreground hover:bg-[#e81123] hover:text-white active:bg-[#c50f1f] transition-colors"
       >
         <X size={16} />
       </button>
