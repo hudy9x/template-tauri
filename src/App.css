@@ -122,7 +122,7 @@
 
 html,
 body {
-  --rounded-window: 10px;
+  --rounded-window: 12px;
   --scroll-width: 7px;
   --scroll-rounded: 3px;
 
