@@ -12,12 +12,21 @@ This guide provides the essential steps to implement a custom titlebar in Tauri 
 
 ### Required Dependencies
 
+**Frontend** (`package.json`):
 ```json
 {
   "@tauri-apps/api": "^2.x.x",
   "react": "^18.x.x"
 }
 ```
+
+**Backend** (`src-tauri/Cargo.toml`):
+```toml
+[dependencies]
+tauri = { version = "2", features = ["macos-private-api"] }
+```
+
+**Important**: The `macos-private-api` feature is required for proper titlebar functionality on macOS.
 
 ### Tauri Configuration
 
@@ -241,14 +250,26 @@ useEffect(() => {
 }, [appWindow]);
 ```
 
+### 4. macOS Titlebar Issues
+
+**Problem**: Titlebar not working properly on macOS.
+
+**Solution**: Ensure `macos-private-api` feature is enabled in `Cargo.toml`:
+
+```toml
+[dependencies]
+tauri = { version = "2", features = ["macos-private-api"] }
+```
+
 ## Summary
 
 To create a custom titlebar in Tauri:
 
-1. **Configure Tauri**: Set `decorations: false` in `tauri.conf.json`
-2. **Create Container**: Add `data-tauri-drag-region` to enable dragging
-3. **Add Buttons**: Create minimize, maximize, and close buttons using Tauri window API
-4. **Integrate**: Add titlebar component to your app layout
-5. **Critical Rule**: Never add `data-tauri-drag-region` to interactive elements
+1. **Configure Rust**: Add `macos-private-api` feature to `Cargo.toml`
+2. **Configure Tauri**: Set `decorations: false` in `tauri.conf.json`
+3. **Create Container**: Add `data-tauri-drag-region` to enable dragging
+4. **Add Buttons**: Create minimize, maximize, and close buttons using Tauri window API
+5. **Integrate**: Add titlebar component to your app layout
+6. **Critical Rule**: Never add `data-tauri-drag-region` to interactive elements
 
 The titlebar container must have `data-tauri-drag-region` for window dragging, while buttons use the Tauri window API (`getCurrentWindow()`) for window controls.
