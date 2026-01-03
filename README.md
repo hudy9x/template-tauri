@@ -102,6 +102,34 @@ pnpm app-dev
 - `pnpm preview` - Preview the built application
 - `pnpm app-dev` - Start Tauri development environment
 - `pnpm app-build` - Build production Tauri application
+- `pnpm rename <new-name>` - Rename the application across all configuration files
+
+## 🏷️ Renaming Your App
+
+To rename your application, simply run:
+
+```bash
+pnpm rename "Your App Name"
+```
+
+This will automatically update:
+- **`package.json`** - Sets the `name` field to kebab-case (e.g., "your-app-name")
+- **`src-tauri/Cargo.toml`** - Updates the `name` and `description` fields
+- **`src-tauri/tauri.conf.json`** - Updates `productName`, `identifier`, and window `title`
+
+The script automatically generates a kebab-case identifier from your app name, converting spaces and special characters to hyphens.
+
+**Example:**
+```bash
+pnpm rename "My Awesome App"
+```
+
+This will set:
+- Package name: `my-awesome-app`
+- Product name: `My Awesome App`
+- Identifier: `com.my-awesome-app.app`
+
+> **Note:** After renaming, you may need to run `pnpm install` to update dependencies.
 
 ## 🏗️ Building for Production
 

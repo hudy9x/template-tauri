@@ -1,7 +1,7 @@
 {
-  "name": "UML Editor",
+  "name": "Tauri template",
   "private": true,
-  "version": "1.25.2",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,8 @@
     "app-dev": "tauri dev",
     "app-build": "tauri build",
     "app-upver": "node scripts/generate-changelog.js && node scripts/version-upgrade.js",
-    "app-sign": "rm ./key && rm ./key.pub && pnpm tauri signer generate -w key"
+    "app-sign": "rm ./key && rm ./key.pub && pnpm tauri signer generate -w key",
+    "rename": "node scripts/rename-app.js"
   },
   "dependencies": {
     "@radix-ui/react-context-menu": "^2.2.15",

@@ -1,7 +1,7 @@
 [package]
-name = "uml-editor"
-version = "0.1.3"
-description = "Simple plantuml editor"
+name = "tauri-template"
+version = "0.0.1"
+description = "Tauri template"
 authors = ["hudy9x"]
 edition = "2021"
 
