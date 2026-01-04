@@ -183,7 +183,28 @@ Global state management is handled by **Jotai**, providing:
 
 Store files are located in `src/stores/`.
 
-## 🛣️ Routing
+## � Workflows
+
+This template includes step-by-step workflow guides for implementing common features. These guides are designed to help AI assistants or developers implement features consistently.
+
+| No. | File Path | Description |
+|-----|-----------|-------------|
+| 1 | [`docs/workflow-titlebar.md`](docs/workflow-titlebar.md) | Create a custom titlebar with macOS-style window controls (close, minimize, maximize) |
+| 2 | [`docs/workflow-open-with.md`](docs/workflow-open-with.md) | Implement macOS "Open With" functionality to open files from Finder |
+
+### Using Workflows
+
+Each workflow document provides:
+- Prerequisites and dependencies needed
+- Step-by-step implementation instructions
+- Complete code examples
+- Configuration requirements
+- Testing procedures
+- Troubleshooting tips
+
+These workflows are particularly useful when working with AI coding assistants - simply reference the workflow file to get consistent, production-ready implementations.
+
+## �🛣️ Routing
 
 Client-side routing is powered by **React Router v7**. Define your routes in the appropriate page components located in `src/pages/`.
 
