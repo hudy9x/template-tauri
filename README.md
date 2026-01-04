@@ -2,7 +2,7 @@
 
 This branch demonstrates a complete implementation of macOS "Open With" functionality, allowing users to open markdown files directly from Finder.
 
-![Open With Feature](docs/open-with-preview.png)
+![Open With Feature](docs/open-with-preview-1.png)
 
 **What's implemented:**
 - Right-click any `.md` file in Finder → "Open With" → Your App
