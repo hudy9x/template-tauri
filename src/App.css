@@ -126,8 +126,8 @@ body {
   --scroll-width: 7px;
   --scroll-rounded: 3px;
 
-  /* background: transparent; */
-  background: var(--background);
+  background: transparent;
+  /* background: var(--background); */
   overflow: hidden;
   border-radius: var(--rounded-window);
 }
@@ -160,7 +160,7 @@ body:after {
   overflow: hidden;
   min-height: 100vh;
   max-height: 100vh;
-  background: hsl(var(--background));
+  background: transparent;
   clip-path: inset(0 round var(--rounded-window));
   display: flex;
   flex-direction: column;
