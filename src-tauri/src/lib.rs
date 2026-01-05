@@ -73,13 +73,13 @@ pub fn run() {
                 let blur = NSVisualEffectMaterial::HudWindow;
                 // let blur = NSVisualEffectMaterial::FullScreenUI;
 
-                // Sidebar (Current, thick frosted glass)
-                // HudWindow (Darker, thinner)
-                // Menu (Thin, standard menu transparency)
-                // Popover (Similar to Menu)
-                // UnderWindowBackground (Standard window blur)
-                // UnderPageBackground (Subtle)
-                // FullScreenUI (Dark and thick)
+                // let blur = NSVisualEffectMaterial::Sidebar (Current, thick frosted glass)
+                // let blur = NSVisualEffectMaterial::HudWindow (Darker, thinner)
+                // let blur = NSVisualEffectMaterial::Menu (Thin, standard menu transparency)
+                // let blur = NSVisualEffectMaterial::Popover (Similar to Menu)
+                // let blur = NSVisualEffectMaterial::UnderWindowBackground (Standard window blur)
+                // let blur = NSVisualEffectMaterial::UnderPageBackground (Subtle)
+                // let blur = NSVisualEffectMaterial::FullScreenUI (Dark and thick)
 
 
                 apply_vibrancy(&window, blur, None, Some(10.0))
