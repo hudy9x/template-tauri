@@ -67,20 +67,23 @@ pub fn run() {
             // set background color only when building for macOS
             #[cfg(target_os = "macos")]
             {
-                use cocoa::appkit::{NSColor, NSWindow};
-                use cocoa::base::{id, nil};
+                use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
-                let ns_window = window.ns_window().unwrap() as id;
-                unsafe {
-                    let bg_color = NSColor::colorWithRed_green_blue_alpha_(
-                        nil,
-                        0.0,
-                        0.0,
-                        1.0,
-                        0.5,
-                    );
-                    ns_window.setBackgroundColor_(bg_color);
-                }
+                // Apply blur effect with 10px rounded corners
+                // let blur = NSVisualEffectMaterial::HudWindow;
+                let blur = NSVisualEffectMaterial::FullScreenUI;
+
+                // Sidebar (Current, thick frosted glass)
+                // HudWindow (Darker, thinner)
+                // Menu (Thin, standard menu transparency)
+                // Popover (Similar to Menu)
+                // UnderWindowBackground (Standard window blur)
+                // UnderPageBackground (Subtle)
+                // FullScreenUI (Dark and thick)
+
+
+                apply_vibrancy(&window, blur, None, Some(10.0))
+                    .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
             }
             // Capture CLI arguments to check if a file was opened
             let args: Vec<String> = std::env::args().collect();
