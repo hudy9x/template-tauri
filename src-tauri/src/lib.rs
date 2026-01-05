@@ -1,6 +1,6 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use std::sync::Mutex;
-use tauri::{Emitter, Manager, TitleBarStyle, WebviewUrl, WebviewWindowBuilder};
+use tauri::{Emitter, Manager, WebviewUrl, WebviewWindowBuilder};
 
 // Global state to store the opened file path
 struct OpenedFilePath(Mutex<Option<String>>);
@@ -70,8 +70,8 @@ pub fn run() {
                 use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
                 // Apply blur effect with 10px rounded corners
-                // let blur = NSVisualEffectMaterial::HudWindow;
-                let blur = NSVisualEffectMaterial::FullScreenUI;
+                let blur = NSVisualEffectMaterial::HudWindow;
+                // let blur = NSVisualEffectMaterial::FullScreenUI;
 
                 // Sidebar (Current, thick frosted glass)
                 // HudWindow (Darker, thinner)
