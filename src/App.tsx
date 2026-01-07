@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <>
-        <Titlebar />
+        {/* <Titlebar /> */}
         <BrowserRouter>
           <Layout>
             <Toaster position="bottom-right" richColors />

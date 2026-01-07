@@ -14,7 +14,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer - Fixed at Bottom */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
