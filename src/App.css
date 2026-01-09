@@ -148,6 +148,19 @@ body:after {
   border-radius: var(--rounded-window);
   box-shadow: var(--rounded-window-1), var(--rounded-window-2);
   pointer-events: none;
+
+  opacity: 0;
+  animation: borderFadeIn 700ms ease-in-out 500ms forwards;
+}
+
+@keyframes borderFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .dark body:after {
