@@ -1,34 +1,28 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
-
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { Titlebar } from "@/features/Titlebar";
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <main className="mx-auto w-[300px] py-10">
-      <div className="pointer-events-auto">
-        <ThemeToggle />
-      </div>
+    <main
+      className={cn(
+        "fixed top-0 left-0 z-50 w-full h-full flex flex-col items-center justify-center bg-background",
+        "transition-opacity duration-600 delay-[200ms] ease-in-out fill-mode-forwards",
+        isVisible ? "opacity-100" : "opacity-0"
+      )}
+    >
 
-      {/* Lorem Ipsum for Overflow Demo */}
-      <div className="">
-        <h3 className="font-semibold mb-2">Lorem Ipsum</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <Titlebar />
 
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
-          Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-          Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
-        </p>
-      </div>
+      <h1 className="text-4xl font-bold tracking-tight">Welcome to Tauri</h1>
+      <p className="text-muted-foreground mt-4 text-lg">Build smaller, faster, and more secure desktop applications.</p>
     </main>
   );
 }

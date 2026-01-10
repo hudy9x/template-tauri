@@ -6,15 +6,12 @@ import { Toaster } from "@/components/ui/sonner"
 import Home from './pages/Home';
 import { Layout } from './components/Layout';
 import Empty from './pages/Empty';
-import { Titlebar } from './features/Titlebar';
-
 
 function App() {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <>
-        <Titlebar />
         <BrowserRouter>
           <Layout>
             <Toaster position="bottom-right" richColors />

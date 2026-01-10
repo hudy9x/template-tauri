@@ -1,6 +1,6 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use std::sync::Mutex;
-use tauri::{Emitter, Manager};
+use tauri::{Manager, WebviewUrl, WebviewWindowBuilder};
 
 // Global state to store the opened file path
 struct OpenedFilePath(Mutex<Option<String>>);
@@ -54,30 +54,36 @@ pub fn run() {
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_os::init())
         .setup(|app| {
-            // Capture CLI arguments to check if a file was opened
-            let args: Vec<String> = std::env::args().collect();
-            let opened_file = if args.len() > 1 {
-                // The file path is typically the second argument (first is the executable)
-                let file_path = args[1].clone();
-                // Check if it's a .pu or .puml file
-                if file_path.ends_with(".pu") || file_path.ends_with(".puml") {
-                    Some(file_path.clone())
-                } else {
-                    None
-                }
-            } else {
-                None
-            };
+            let win_builder = WebviewWindowBuilder::new(app, "main", WebviewUrl::default())
+                .title("Transparent Titlebar Window")
+                .inner_size(800.0, 600.0)
+                .decorations(false)
+                .transparent(true);
 
-            // Store the opened file path in app state
-            app.manage(OpenedFilePath(Mutex::new(opened_file.clone())));
 
-            // Emit event to frontend if a file was opened
-            if let Some(file_path) = opened_file {
-                let window = app
-                    .get_webview_window("main")
-                    .expect("Failed to get main window");
-                let _ = window.emit("file-opened", file_path);
+
+            let window = win_builder.build().unwrap();
+
+            // set background color only when building for macOS
+            #[cfg(target_os = "macos")]
+            {
+                use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
+
+                // Apply blur effect with 10px rounded corners
+                let blur = NSVisualEffectMaterial::HudWindow;
+                // let blur = NSVisualEffectMaterial::FullScreenUI;
+
+                // let blur = NSVisualEffectMaterial::Sidebar (Current, thick frosted glass)
+                // let blur = NSVisualEffectMaterial::HudWindow (Darker, thinner)
+                // let blur = NSVisualEffectMaterial::Menu (Thin, standard menu transparency)
+                // let blur = NSVisualEffectMaterial::Popover (Similar to Menu)
+                // let blur = NSVisualEffectMaterial::UnderWindowBackground (Standard window blur)
+                // let blur = NSVisualEffectMaterial::UnderPageBackground (Subtle)
+                // let blur = NSVisualEffectMaterial::FullScreenUI (Dark and thick)
+
+
+                apply_vibrancy(&window, blur, None, Some(10.0))
+                    .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
             }
 
             // Register cleanup handler for when the app is closing

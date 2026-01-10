@@ -12,17 +12,7 @@
   "app": {
     "withGlobalTauri": true,
     "macOSPrivateApi": true,
-    "windows": [
-      {
-        "title": "Tauri template",
-        "width": 800,
-        "height": 700,
-        "devtools": true,
-        "decorations": false,
-        "transparent": true,
-        "shadow": true
-      }
-    ],
+    "windows": [],
     "security": {
       "csp": null
     }

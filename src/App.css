@@ -122,12 +122,12 @@
 
 html,
 body {
-  --rounded-window: 12px;
+  --rounded-window: 10px;
   --scroll-width: 7px;
   --scroll-rounded: 3px;
 
-  /* background: transparent; */
-  background: var(--background);
+  background: transparent;
+  /* background: var(--background); */
   overflow: hidden;
   border-radius: var(--rounded-window);
 }
@@ -148,6 +148,19 @@ body:after {
   border-radius: var(--rounded-window);
   box-shadow: var(--rounded-window-1), var(--rounded-window-2);
   pointer-events: none;
+
+  opacity: 0;
+  animation: borderFadeIn 700ms ease-in-out 500ms forwards;
+}
+
+@keyframes borderFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .dark body:after {
@@ -160,7 +173,7 @@ body:after {
   overflow: hidden;
   min-height: 100vh;
   max-height: 100vh;
-  background: hsl(var(--background));
+  background: transparent;
   clip-path: inset(0 round var(--rounded-window));
   display: flex;
   flex-direction: column;
