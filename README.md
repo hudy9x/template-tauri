@@ -2,11 +2,11 @@
 
 A modern template for building cross-platform desktop applications using Tauri, React, and TypeScript. This template comes pre-configured with essential tools and commands to jumpstart your desktop app development.
 
-## 💎 Feature Showcase: macOS Window Customization
+## 💎 Feature Showcase: Blur Transparent Window
 
-This branch demonstrates a custom macOS window implementation with native blur, rounded corners, and shadow.
+This is an example about blur transparent window.
 
-![Window Customization Preview](./docs/macos-window-preview.png)
+![Blur Transparent Window](./docs/blured-transparent-window.gif)
 
 **What's implemented:**
 - **Native Blur:** Uses `window-vibrancy` for high-performance frosted glass effects.
