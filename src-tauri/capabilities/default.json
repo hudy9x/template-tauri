@@ -24,6 +24,11 @@
     "core:window:allow-start-dragging",
     "core:window:allow-toggle-maximize",
     "shell:allow-open",
+    "store:default",
+    "store:allow-load",
+    "store:allow-get",
+    "store:allow-set",
+    "store:allow-delete",
     {
       "identifier": "opener:allow-open-url",
       "allow": [

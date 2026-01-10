@@ -48,6 +48,15 @@
         "name": "PlantUML Diagram",
         "description": "PlantUML diagram file",
         "mimeType": "text/plain"
+      },
+      {
+        "ext": [
+          "md",
+          "markdown"
+        ],
+        "name": "Markdown Document",
+        "description": "Markdown text file",
+        "mimeType": "text/markdown"
       }
     ]
   },

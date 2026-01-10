@@ -2,7 +2,7 @@
 use std::sync::Mutex;
 use tauri::{Emitter, Manager};
 
-// Global state to store the opened file path
+// Global state to store the opened file path (kept for backward compatibility)
 struct OpenedFilePath(Mutex<Option<String>>);
 
 #[tauri::command]
@@ -12,7 +12,9 @@ fn greet(name: &str) -> String {
 
 #[tauri::command]
 fn get_opened_file_path(state: tauri::State<OpenedFilePath>) -> Option<String> {
-    state.0.lock().unwrap().clone()
+    let result = state.0.lock().unwrap().clone();
+    utils::log::log_debug(&format!("get_opened_file_path called, returning: {:?}", result));
+    result
 }
 
 #[tauri::command]
@@ -41,10 +43,12 @@ fn close_devtools(app: tauri::AppHandle) {
 }
 
 mod commands;
+mod utils;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_store::Builder::default().build())
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
@@ -56,16 +60,27 @@ pub fn run() {
         .setup(|app| {
             // Capture CLI arguments to check if a file was opened
             let args: Vec<String> = std::env::args().collect();
+            println!("CLI arguments: {:?}", args);
+            
             let opened_file = if args.len() > 1 {
                 // The file path is typically the second argument (first is the executable)
                 let file_path = args[1].clone();
-                // Check if it's a .pu or .puml file
-                if file_path.ends_with(".pu") || file_path.ends_with(".puml") {
+                println!("File path from CLI: {}", file_path);
+                
+                // Check if it's a supported file type (.pu, .puml, .md, .markdown)
+                if file_path.ends_with(".pu") 
+                    || file_path.ends_with(".puml")
+                    || file_path.ends_with(".md")
+                    || file_path.ends_with(".markdown")
+                {
+                    println!("File type is supported, will emit event");
                     Some(file_path.clone())
                 } else {
+                    println!("File type not supported");
                     None
                 }
             } else {
+                println!("No CLI arguments provided");
                 None
             };
 
@@ -74,6 +89,7 @@ pub fn run() {
 
             // Emit event to frontend if a file was opened
             if let Some(file_path) = opened_file {
+                println!("Emitting file-opened event with path: {}", file_path);
                 let window = app
                     .get_webview_window("main")
                     .expect("Failed to get main window");
@@ -110,6 +126,20 @@ pub fn run() {
             commands::git::get_git_status,
             commands::git::git_pull,
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|app_handle, event| {
+            match event {
+                tauri::RunEvent::Opened { urls } => {
+                    utils::log::log_debug(&format!("RunEvent::Opened triggered with {} URLs", urls.len()));
+                    
+                    // Handle file opening from macOS "Open With"
+                    for url in urls {
+                        let file_path = url.path();
+                        commands::file_opening::handle_file_opened(&app_handle, file_path);
+                    }
+                }
+                _ => {}
+            }
+        });
 }
